@@ -3,14 +3,24 @@ layout: page
 title: About
 permalink: /about/
 ---
-<b>WHAT'S UP WITH THE NAME?</b>
-When it came time to name his new company, Ben McDonald began to think about joy, the kind of joy that is hard to find once real life sets in.
-
-Ben thought about the joy a child feels riding a big wheel down a steep driveway. He thought about the thrill of a neighborhood game of flashlight tag on a summer night. He thought about the triumph of learning to ride your bike without training wheels.
-
-This joy, this thrill, this triumph: Ben experienced all of these feelings growing up as a kid ... on a street called Londonberry.
-
-<b>WHEN WAS THE COMPANY STARTED?</b>
-Ben founded the company in 2010 when he left the management team at Hashrocket to go out on his own.
-
-Ben has a passion for improving the technical medium in his hometown of Jacksonville, Florida and is dedicated to helping small companies in the incubation or startup phases of their software or website development.
+<div>WHAT'S UP WITH THE NAME?</div>
+<div>
+  <p>
+    When it came time to name his new company, I began to think about joy, the kind of joy that is a rement of less stressful days, like those days we had as kids.
+  </p>
+  <p>
+    That type of joy reminded me of the joy I felt riding my big wheel down my steep driveway in Atlanta. The thought about the thrill of a neighborhood game of flashlight tag on a summer night. The thought about the triumph of learning to ride your bike without training wheels.
+  </p>
+  <p>
+    This joy, this thrill, this triumph: I experienced all of these feelings growing up as a kid ... on a street named <i>Londonberry</i>.
+  </p>
+</div>
+<div>WHEN WAS THE COMPANY STARTED?</div>
+<div>
+  <p>
+    I founded the company in 2010 after leaving the management team at Hashrocket to go out on my own. After a few years of consulting companies, I went and worked as an executive for 9 years and as of August, 2020am back at it.
+  </p>
+  <p>
+    I havexs a passion for improving the technical medium in my hometown of Jacksonville, Florida and am dedicated to helping small companies in the incubation or startup phases of their software or website development.
+  </p>
+</div>
