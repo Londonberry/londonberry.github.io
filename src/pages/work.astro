@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    name: 'CBU App',
+    category: 'Sports Technology',
+    description: 'A travel ball organization platform that streamlines team management, scheduling, and communication for competitive youth sports programs.',
+    tags: ['Web App', 'Mobile', 'Sports Tech'],
+    status: 'In Development',
+  },
+  {
+    name: 'Winsight',
+    category: 'Sports Technology',
+    description: 'A video streaming ecosystem built for sports — enabling teams, leagues, and fans to capture, stream, and analyze game footage.',
+    tags: ['Streaming', 'Video', 'Sports Tech'],
+    status: 'Completed',
+  },
+  {
+    name: 'Hashalbum',
+    category: 'Social Media',
+    description: 'A social photo platform that organized and curated photos from events using hashtag-based collections.',
+    tags: ['Web App', 'Social', 'Media'],
+    status: 'Completed',
+  },
+];
+---
+
+<BaseLayout
+  title="Work"
+  description="Explore Londonberry's portfolio of custom software projects — from sports technology platforms to streaming ecosystems and social media applications."
+>
+  <!-- Header -->
+  <section class="bg-primary text-white py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-white/60 mb-2">What We've Built</h2>
+      <h1 class="text-3xl md:text-5xl font-black leading-tight">Work</h1>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid gap-12">
+        {projects.map((project) => (
+          <article class="border-b border-muted/30 pb-12 last:border-0">
+            <div class="grid md:grid-cols-5 gap-8">
+              <div class="md:col-span-2">
+                <div class="bg-muted/20 rounded-lg aspect-video flex items-center justify-center">
+                  <span class="text-muted text-sm uppercase tracking-wider">Coming Soon</span>
+                </div>
+              </div>
+              <div class="md:col-span-3">
+                <div class="flex items-center gap-3 mb-2">
+                  <h2 class="text-xs font-bold uppercase tracking-widest text-accent">{project.category}</h2>
+                  {project.status === 'In Development' && (
+                    <span class="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">Active</span>
+                  )}
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold text-heading mb-4">{project.name}</h3>
+                <p class="text-body/80 leading-relaxed mb-6">{project.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span class="bg-dark/10 text-dark text-xs font-semibold px-3 py-1 rounded-full">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-heading text-white py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Have a project in mind?</h2>
+      <p class="text-lg text-white/80 mb-8 max-w-xl mx-auto">
+        We're always looking for interesting problems to solve — especially in sports tech.
+      </p>
+      <a href="/contact" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
+        Let's Talk
+      </a>
+    </div>
+  </section>
+</BaseLayout>

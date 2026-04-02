@@ -1,5 +1,19 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+# Astro
+dist/
+.astro/
+node_modules/
+
+# Design assets (large binaries, source files, contains credentials)
+design/
+
+# Environment
+.env
+.env.*
+
+# Editor
+.DS_Store
+*.swp
+*.swo
+
+# Build
+npm-debug.log*

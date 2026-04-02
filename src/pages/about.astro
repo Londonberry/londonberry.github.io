@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Londonberry was founded in 2010 by Ben McDonald in Jacksonville, FL. We build custom software using AI-assisted development, specializing in sports technology."
+>
+  <!-- Header -->
+  <section class="bg-primary text-white py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-white/60 mb-2">Who We Are</h2>
+      <h1 class="text-3xl md:text-5xl font-black leading-tight">About</h1>
+    </div>
+  </section>
+
+  <!-- The Name -->
+  <section class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">What's Up With The Name?</h2>
+        <p class="text-2xl md:text-3xl font-bold text-heading mb-8 leading-tight">
+          It started on a street in Atlanta.
+        </p>
+        <div class="space-y-6 text-lg text-body/80 leading-relaxed">
+          <p>
+            When it came time to name the company, I started thinking about joy — the kind of joy that's a remnant of less stressful days, like the ones we had as kids.
+          </p>
+          <p>
+            The thrill of riding a big wheel down a steep driveway. A neighborhood game of flashlight tag on a summer night. The triumph of learning to ride your bike without training wheels.
+          </p>
+          <p>
+            I experienced all of those feelings growing up on a street named <em class="text-heading font-semibold">Londonberry</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-5 gap-12">
+        <div class="md:col-span-2">
+          <img
+            src="/images/ben.jpg"
+            alt="Ben McDonald, Founder of Londonberry"
+            class="w-32 h-32 rounded-full object-cover mb-4"
+          />
+          <h2 class="text-2xl font-bold text-heading">Ben McDonald</h2>
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent mt-1">Founder & Principal</p>
+        </div>
+        <div class="md:col-span-3 space-y-6 text-lg text-body/80 leading-relaxed">
+          <p>
+            I founded Londonberry in 2010 after leaving the management team at Hashrocket to go out on my own. After several years of consulting, I spent nine years as a technology executive before coming back to what I love — building software and helping others build it better.
+          </p>
+          <p>
+            Today, Londonberry is a one-person shop amplified by AI. I use AI agents and AI-assisted development tools daily, and that's exactly what makes it possible to deliver at the speed and quality of a much larger team.
+          </p>
+          <p>
+            I'm based in Jacksonville, Florida and I'm passionate about improving the local tech community, helping startups find their footing, and building software for the sports world.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work -->
+  <section class="py-20 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">How We Work</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-12 max-w-2xl leading-tight">
+        One experienced builder, backed by AI agents.
+      </p>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div>
+          <h3 class="text-lg font-bold text-heading mb-3">Deep Experience</h3>
+          <p class="text-body/80 leading-relaxed">
+            15+ years of building software, leading teams, and shipping products. The judgment to know what to build comes from experience — AI just helps build it faster.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-heading mb-3">AI-Amplified</h3>
+          <p class="text-body/80 leading-relaxed">
+            AI agents handle the repetitive work while human expertise drives the decisions that matter. The result is startup speed with senior-level quality.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-heading mb-3">Sports Tech Focus</h3>
+          <p class="text-body/80 leading-relaxed">
+            We love the intersection of sports and technology. From travel ball platforms to video streaming ecosystems, this is where we do our best work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-heading text-white py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Want to work together?</h2>
+      <p class="text-lg text-white/80 mb-8 max-w-xl mx-auto">
+        I'm always up for a conversation about building something new.
+      </p>
+      <a href="/contact" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
+        Get In Touch
+      </a>
+    </div>
+  </section>
+</BaseLayout>
