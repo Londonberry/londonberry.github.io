@@ -14,6 +14,64 @@
     BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Active nav speech bubble */
+.nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  /* Fixed dimensions for all items */
+  width: 120px;
+  height: 44px;
+  padding: 8px 0 0;
+  margin: 0;
+}
+
+/* The label text stays put */
+.nav-label {
+  position: relative;
+  z-index: 10;
+}
+
+/* Speech bubble SVG shape behind everything */
+.nav-bubble-shape {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Subtitle: always takes space but invisible until hover/active */
+.nav-subtitle {
+  position: relative;
+  z-index: 10;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Show on hover */
+.nav-item:hover .nav-subtitle,
+.nav-item:hover .nav-bubble-shape {
+  opacity: 1;
+}
+
+/* Show on active page */
+.nav-item.active .nav-subtitle,
+.nav-item.active .nav-bubble-shape {
+  opacity: 1;
+}
+
 /* Blog prose styling */
 .blog-content h2 {
   font-size: 1.5rem;

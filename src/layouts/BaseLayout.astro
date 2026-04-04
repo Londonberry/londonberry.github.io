@@ -8,10 +8,18 @@ interface Props {
   canonicalURL?: string;
 }
 
-const { title, description, ogImage = '/images/logo_index.png', canonicalURL } = Astro.props;
+const { title, description, ogImage = '/images/social-card.png', canonicalURL } = Astro.props;
 const siteTitle = 'Londonberry';
 const fullTitle = title === 'Home' ? `${siteTitle} | Build Faster. Think Bigger.` : `${title} | ${siteTitle}`;
 const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const navItems = [
+  { href: '/services', label: 'Services', subtitle: 'What We Do' },
+  { href: '/work', label: 'Work', subtitle: "What We've Built" },
+  { href: '/about', label: 'About', subtitle: 'Who We Are' },
+  { href: '/blog', label: 'Insights', subtitle: 'From The Blog' },
+];
 ---
 
 <!doctype html>
@@ -41,7 +49,7 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/images/brand/logomark-color.svg" />
     <title>{fullTitle}</title>
 
     <!-- Structured Data -->
@@ -51,7 +59,7 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
       "name": "Londonberry",
       "description": "AI-powered custom software development, rapid prototyping, and strategic consulting for sports technology and startups.",
       "url": "https://londonberry.com",
-      "logo": "https://londonberry.com/images/logo_index.png",
+      "logo": "https://londonberry.com/images/social-card.png",
       "email": "info@londonberry.com",
       "founder": {
         "@type": "Person",
@@ -79,32 +87,40 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
     })} />
   </head>
   <body class="bg-white text-body font-sans antialiased">
-    <header class="bg-primary">
-      <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2">
-          <img src="/images/logo.png" alt="Londonberry" class="h-10" />
+    <header class="bg-primary overflow-visible relative z-10">
+      <nav class="max-w-6xl mx-auto px-6 pt-5 pb-8 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/images/brand/logomark-white.svg" alt="" class="h-14 w-14" />
+          <span class="text-white font-black text-3xl tracking-tight uppercase">Londonberry</span>
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="/services" class="text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide transition-colors">Services</a>
-          <a href="/work" class="text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide transition-colors">Work</a>
-          <a href="/about" class="text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide transition-colors">About</a>
-          <a href="/blog" class="text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide transition-colors">Insights</a>
+        <div class="hidden lg:flex items-center gap-2">
+          {navItems.map(item => {
+            const isActive = currentPath === item.href;
+            return (
+            <a href={item.href} class={`nav-item relative text-white text-sm font-semibold uppercase tracking-wide${isActive ? ' active' : ''}`}>
+              <span class="nav-label">{item.label}</span>
+              <span class="nav-subtitle">{item.subtitle}</span>
+              <svg class="nav-bubble-shape" viewBox="0 0 100 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4,6 L22,6 L30,0 L38,6 L96,6 Q100,6 100,10 L100,46 Q100,50 96,50 L78,50 L70,56 L62,50 L4,50 Q0,50 0,46 L0,10 Q0,6 4,6 Z" fill="rgba(255,255,255,0.18)"/>
+              </svg>
+            </a>
+          );
+          })}
           <a href="/contact" class="bg-white text-primary px-5 py-2 rounded-md text-sm font-bold uppercase tracking-wide hover:bg-white/90 transition-colors">Contact</a>
         </div>
         <!-- Mobile menu button -->
-        <button id="mobile-menu-btn" class="md:hidden text-white" aria-label="Toggle menu">
+        <button id="mobile-menu-btn" class="lg:hidden text-white" aria-label="Toggle menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </nav>
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+      <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
         <div class="flex flex-col gap-3">
-          <a href="/services" class="text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide">Services</a>
-          <a href="/work" class="text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide">Work</a>
-          <a href="/about" class="text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide">About</a>
-          <a href="/blog" class="text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide">Insights</a>
+          {navItems.map(item => (
+            <a href={item.href} class={currentPath === item.href ? "text-white text-sm font-bold uppercase tracking-wide" : "text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide"}>{item.label}</a>
+          ))}
           <a href="/contact" class="text-white font-bold text-sm uppercase tracking-wide">Contact</a>
         </div>
       </div>
@@ -118,7 +134,10 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
       <div class="max-w-6xl mx-auto px-6 py-12">
         <div class="grid md:grid-cols-3 gap-8">
           <div>
-            <img src="/images/logo.png" alt="Londonberry" class="h-10 mb-4" />
+            <div class="flex items-center gap-3 mb-4">
+              <img src="/images/brand/logomark-white.svg" alt="" class="h-9 w-9" />
+              <span class="text-white font-extrabold text-xl tracking-tight uppercase">Londonberry</span>
+            </div>
             <p class="text-white/70 text-sm leading-relaxed">AI-powered software development and strategy from Jacksonville, FL.</p>
           </div>
           <div>
