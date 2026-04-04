@@ -8,6 +8,7 @@ const projects = [
     description: 'A travel ball organization platform that streamlines team management, scheduling, and communication for competitive youth sports programs.',
     tags: ['Web App', 'Mobile', 'Sports Tech'],
     status: 'In Development',
+    image: '/cbu-app-hero.jpg',
   },
   {
     name: 'Winsight',
@@ -15,6 +16,7 @@ const projects = [
     description: 'A video streaming ecosystem built for sports — enabling teams, leagues, and fans to capture, stream, and analyze game footage.',
     tags: ['Streaming', 'Video', 'Sports Tech'],
     status: 'Completed',
+    image: '/winsight-hero.jpg',
   },
   {
     name: 'Hashalbum',
@@ -22,6 +24,7 @@ const projects = [
     description: 'A social photo platform that organized and curated photos from events using hashtag-based collections.',
     tags: ['Web App', 'Social', 'Media'],
     status: 'Completed',
+    image: '/hashalbums-hero.jpg',
   },
 ];
 ---
@@ -38,9 +41,13 @@ const projects = [
           <article class="border-b border-muted/30 pb-12 last:border-0">
             <div class="grid md:grid-cols-5 gap-8">
               <div class="md:col-span-2">
-                <div class="bg-muted/20 rounded-lg aspect-video flex items-center justify-center">
-                  <span class="text-muted text-sm uppercase tracking-wider">Coming Soon</span>
-                </div>
+                {project.image ? (
+                  <img src={project.image} alt={`${project.name} screenshot`} class="rounded-lg aspect-video object-cover w-full" loading="lazy" />
+                ) : (
+                  <div class="bg-muted/20 rounded-lg aspect-video flex items-center justify-center">
+                    <span class="text-muted text-sm uppercase tracking-wider">Coming Soon</span>
+                  </div>
+                )}
               </div>
               <div class="md:col-span-3">
                 <div class="flex items-center gap-3 mb-2">

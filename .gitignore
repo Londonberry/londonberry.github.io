@@ -15,5 +15,10 @@ design/
 *.swp
 *.swo
 
+# BMad Method
+.agents/
+.claude/
+_bmad/
+
 # Build
 npm-debug.log*
