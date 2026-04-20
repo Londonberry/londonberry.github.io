@@ -6,12 +6,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Services"
   description="Londonberry offers AI-powered rapid prototyping, AI strategy consulting, and strategic product management for startups, sports tech companies, and growing businesses."
 >
+  <!-- Page header -->
+  <section class="pt-16 md:pt-20 pb-4">
+    <div class="max-w-6xl mx-auto px-6">
+      <h1 class="text-4xl md:text-6xl font-black text-heading leading-tight">What we do.</h1>
+      <p class="text-lg md:text-xl text-body/80 mt-4 max-w-2xl leading-relaxed">
+        Rapid prototyping, AI strategy consulting, and product management — AI-assisted development that moves at startup speed without sacrificing senior-level judgment.
+      </p>
+    </div>
+  </section>
+
   <!-- Rapid Prototyping -->
   <section id="rapid-prototyping" class="py-20 md:py-24 border-b border-muted/30">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-5 gap-12">
         <div class="md:col-span-2">
-          <img src="/images/service_development.png" alt="" class="w-14 h-14 mb-5" />
+          <img src="/images/service_development.png" alt="Rapid prototyping illustration" class="w-14 h-14 mb-5" />
           <h2 class="text-2xl md:text-3xl font-bold text-heading">Rapid Prototyping</h2>
         </div>
         <div class="md:col-span-3">
@@ -50,7 +60,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-5 gap-12">
         <div class="md:col-span-2">
-          <img src="/images/service_management.png" alt="" class="w-14 h-14 mb-5" />
+          <img src="/images/service_management.png" alt="AI strategy consulting illustration" class="w-14 h-14 mb-5" />
           <h2 class="text-2xl md:text-3xl font-bold text-heading">AI Strategy & Consulting</h2>
         </div>
         <div class="md:col-span-3">
@@ -89,7 +99,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-5 gap-12">
         <div class="md:col-span-2">
-          <img src="/images/service_ui.png" alt="" class="w-14 h-14 mb-5" />
+          <img src="/images/service_ui.png" alt="Product management illustration" class="w-14 h-14 mb-5" />
           <h2 class="text-2xl md:text-3xl font-bold text-heading">Product Management</h2>
         </div>
         <div class="md:col-span-3">
