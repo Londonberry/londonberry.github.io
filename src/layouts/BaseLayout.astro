@@ -1,18 +1,74 @@
 ---
 import '../styles/global.css';
 
+interface ArticleMeta {
+  publishedTime: string;
+  modifiedTime?: string;
+  author?: string;
+  tags?: string[];
+  section?: string;
+}
+
 interface Props {
   title: string;
   description: string;
   ogImage?: string;
   canonicalURL?: string;
+  ogType?: 'website' | 'article';
+  article?: ArticleMeta;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, ogImage = '/images/social-card.png', canonicalURL } = Astro.props;
+const {
+  title,
+  description,
+  ogImage = '/images/social-card.png',
+  canonicalURL,
+  ogType = 'website',
+  article,
+  jsonLd,
+} = Astro.props;
+
 const siteTitle = 'Londonberry';
 const fullTitle = title === 'Home' ? `${siteTitle} | Build Faster. Think Bigger.` : `${title} | ${siteTitle}`;
 const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const absoluteOgImage = new URL(ogImage, Astro.site).href;
+
+const defaultLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Londonberry",
+  "description": "AI-powered custom software development, rapid prototyping, and strategic consulting for sports technology and startups.",
+  "url": "https://londonberry.com",
+  "logo": "https://londonberry.com/images/social-card.png",
+  "email": "info@londonberry.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Ben McDonald"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Jacksonville",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "areaServed": "Worldwide",
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Custom Software Development",
+    "Rapid Prototyping",
+    "Sports Technology",
+    "Product Management",
+    "AI Strategy Consulting"
+  ],
+  "sameAs": [
+    "https://github.com/Londonberry",
+    "https://www.linkedin.com/company/londonberry"
+  ]
+};
+
+const structuredData = jsonLd ?? defaultLd;
 
 const navItems = [
   { href: '/services', label: 'Services', subtitle: 'What We Do' },
@@ -28,21 +84,36 @@ const navItems = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="author" content="Ben McDonald" />
+    <meta name="theme-color" content="#ff4746" />
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${siteTitle} — ${description}`} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:locale" content="en_US" />
+    {ogType === 'article' && article && (
+      <>
+        <meta property="article:published_time" content={article.publishedTime} />
+        {article.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime} />}
+        {article.author && <meta property="article:author" content={article.author} />}
+        {article.section && <meta property="article:section" content={article.section} />}
+        {article.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
+      </>
+    )}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+    <meta name="twitter:image" content={absoluteOgImage} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,41 +121,11 @@ const navItems = [
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/svg+xml" href="/images/brand/logomark-color.svg" />
+    <link rel="apple-touch-icon" href="/images/brand/logomark-color.png" />
     <title>{fullTitle}</title>
 
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Londonberry",
-      "description": "AI-powered custom software development, rapid prototyping, and strategic consulting for sports technology and startups.",
-      "url": "https://londonberry.com",
-      "logo": "https://londonberry.com/images/social-card.png",
-      "email": "info@londonberry.com",
-      "founder": {
-        "@type": "Person",
-        "name": "Ben McDonald"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Jacksonville",
-        "addressRegion": "FL",
-        "addressCountry": "US"
-      },
-      "areaServed": "Worldwide",
-      "knowsAbout": [
-        "Artificial Intelligence",
-        "Custom Software Development",
-        "Rapid Prototyping",
-        "Sports Technology",
-        "Product Management",
-        "AI Strategy Consulting"
-      ],
-      "sameAs": [
-        "https://github.com/Londonberry",
-        "https://www.linkedin.com/company/londonberry"
-      ]
-    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body class="bg-white text-body font-sans antialiased">
     <header class="bg-primary overflow-visible relative z-10">
