@@ -1,0 +1,77 @@
+---
+interface Props {
+  overline: string;
+  title: string;
+  description: string;
+  effectiveDate: string;
+}
+
+const { overline, title, description, effectiveDate } = Astro.props;
+---
+
+<section class="bg-primary text-white">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+    <p class="text-xs font-bold uppercase tracking-widest text-white/70 mb-3">{overline}</p>
+    <h1 class="text-4xl md:text-5xl font-black leading-tight mb-5">{title}</h1>
+    <p class="text-lg text-white/85 max-w-3xl leading-relaxed">{description}</p>
+    <p class="text-sm text-white/70 mt-6">Effective date: {effectiveDate}</p>
+  </div>
+</section>
+
+<section class="py-14 md:py-18">
+  <div class="max-w-6xl mx-auto px-6">
+    <article class="legal-content max-w-3xl">
+      <slot />
+    </article>
+  </div>
+</section>
+
+<style is:global>
+  .legal-content h2 {
+    color: var(--color-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-top: 2.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .legal-content p {
+    color: rgba(75, 68, 82, 0.86);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content ul {
+    color: rgba(75, 68, 82, 0.86);
+    line-height: 1.7;
+    list-style: disc;
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .legal-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-content a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .legal-content a:hover {
+    text-decoration: underline;
+  }
+
+  .legal-content .legal-note {
+    background: rgba(201, 199, 203, 0.18);
+    border-left: 4px solid var(--color-primary);
+    margin: 1.5rem 0 2rem;
+    padding: 1rem 1.25rem;
+  }
+</style>
