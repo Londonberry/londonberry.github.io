@@ -3,6 +3,8 @@ title: "The Prototyping Paradox: Why Writing Code Faster Doesn't Mean Shipping F
 description: "CircleCI's 2026 data shows teams writing 59% more code but shipping less reliably. Here's what the rapid prototyping gold rush is getting wrong."
 date: 2026-01-15
 author: "Ben McDonald"
+tags: ["Prototyping", "AI", "Engineering"]
+updated: 2026-05-05
 ---
 
 CircleCI just dropped their [2026 State of Software Delivery report](https://circleci.com/resources/2026-state-of-software-delivery/), and there's a number in it that should make every founder and CTO pause: **main branch success rates have dropped to 70.8%**, the lowest in five-plus years. Nearly 3 in 10 production merge attempts are now failing.

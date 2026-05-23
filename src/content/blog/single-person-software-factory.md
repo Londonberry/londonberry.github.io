@@ -3,6 +3,8 @@ title: "The Single-Person Software Factory Is Real. Here's What It Can't Do."
 description: "A VC built hundreds of thousands of lines of code in two weeks. But 1 in 3 AI-generated snippets has a security flaw. The future isn't about speed. It's about judgment."
 date: 2026-02-05
 author: "Ben McDonald"
+tags: ["AI", "Engineering", "Productivity"]
+updated: 2026-05-05
 ---
 
 Lee Edwards, a GP at Root Ventures and former engineer, recently told [The SF Standard](https://sfstandard.com/2026/02/19/ai-writes-code-now-s-left-software-engineers/) that he built "hundreds of thousands of lines of code in two weeks" across six projects using Claude Code, reading "almost none of it." He described it as a "single-person software factory."

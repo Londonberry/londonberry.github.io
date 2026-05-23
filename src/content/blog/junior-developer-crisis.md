@@ -3,6 +3,8 @@ title: "The Junior Developer Crisis Nobody's Talking About"
 description: "CS enrollment just dropped 8.1%. Tech hiring of new grads is down 55% since 2019. We're building a senior developer shortage that will hit in 5-7 years."
 date: 2026-03-12
 author: "Ben McDonald"
+tags: ["Hiring", "Engineering", "AI"]
+updated: 2026-05-05
 ---
 
 Two data points that should be in every CTO's briefing packet right now:

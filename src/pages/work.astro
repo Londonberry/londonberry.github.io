@@ -8,15 +8,25 @@ const projects = [
     description: 'A travel ball organization platform that streamlines team management, scheduling, and communication for competitive youth sports programs.',
     tags: ['Web App', 'Mobile', 'Sports Tech'],
     status: 'In Development',
-    image: '/cbu-app-hero.jpg',
+    image: '/cbu-app-hero.webp',
+    imageFallback: '/cbu-app-hero.jpg',
+    width: 800,
+    height: 450,
+    serviceAnchor: '/services#rapid-prototyping',
+    appType: 'WebApplication',
   },
   {
     name: 'Winsight',
     category: 'Sports Technology',
-    description: 'A video streaming ecosystem built for sports — enabling teams, leagues, and fans to capture, stream, and analyze game footage.',
+    description: 'A video streaming ecosystem built for sports. Enables teams, leagues, and fans to capture, stream, and analyze game footage.',
     tags: ['Streaming', 'Video', 'Sports Tech'],
     status: 'Completed',
-    image: '/winsight-hero.jpg',
+    image: '/winsight-hero.webp',
+    imageFallback: '/winsight-hero.jpg',
+    width: 800,
+    height: 393,
+    serviceAnchor: '/services#product-management',
+    appType: 'WebApplication',
   },
   {
     name: 'Hashalbum',
@@ -24,14 +34,35 @@ const projects = [
     description: 'A social photo platform that organized and curated photos from events using hashtag-based collections.',
     tags: ['Web App', 'Social', 'Media'],
     status: 'Completed',
-    image: '/hashalbums-hero.jpg',
+    image: '/hashalbums-hero.webp',
+    imageFallback: '/hashalbums-hero.jpg',
+    width: 553,
+    height: 311,
+    serviceAnchor: '/services#rapid-prototyping',
+    appType: 'WebApplication',
   },
 ];
+
+const portfolioLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Londonberry Portfolio",
+  "url": "https://londonberry.com/work/",
+  "hasPart": projects.map((p) => ({
+    "@type": p.appType,
+    "name": p.name,
+    "applicationCategory": p.category,
+    "description": p.description,
+    "image": `https://londonberry.com${p.image}`,
+    "creator": { "@type": "Organization", "name": "Londonberry" },
+  })),
+};
 ---
 
 <BaseLayout
   title="Work"
-  description="Explore Londonberry's portfolio of custom software projects — from sports technology platforms to streaming ecosystems and social media applications."
+  description="Explore Londonberry's portfolio of custom software projects. From sports technology platforms to streaming ecosystems and social media applications."
+  jsonLd={portfolioLd}
 >
   <!-- Page header -->
   <section class="pt-16 md:pt-20 pb-4">
@@ -52,7 +83,18 @@ const projects = [
             <div class="grid md:grid-cols-5 gap-8">
               <div class="md:col-span-2">
                 {project.image ? (
-                  <img src={project.image} alt={`${project.name} screenshot`} class="rounded-lg aspect-video object-cover w-full" loading="lazy" />
+                  <picture>
+                    <source srcset={project.image} type="image/webp" />
+                    <img
+                      src={project.imageFallback}
+                      alt={`${project.name} screenshot`}
+                      width={project.width}
+                      height={project.height}
+                      class="rounded-lg aspect-video object-cover w-full"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                 ) : (
                   <div class="bg-muted/20 rounded-lg aspect-video flex items-center justify-center">
                     <span class="text-muted text-sm uppercase tracking-wider">Coming Soon</span>
@@ -73,6 +115,7 @@ const projects = [
                     <span class="bg-dark/10 text-dark text-xs font-semibold px-3 py-1 rounded-full">{tag}</span>
                   ))}
                 </div>
+                <a href={project.serviceAnchor} class="inline-block mt-6 text-primary font-semibold text-sm hover:underline">How we'd build this &rarr;</a>
               </div>
             </div>
           </article>

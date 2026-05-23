@@ -3,6 +3,8 @@ title: "The Most Traditional Event in Sports Just Became the Most Technologicall
 description: "Augusta National's 90th Masters debuts agentic AI search across 50 years of footage, real-time ball tracking, and AI commentary for 20,000+ shots. The most tradition-bound institution in sports is quietly building the future of fan experience."
 date: 2026-04-04
 author: "Ben McDonald"
+tags: ["Sports Tech", "AI", "Broadcasting"]
+updated: 2026-05-05
 ---
 
 Next week, the [90th Masters Tournament](https://www.masters.com/) tees off at Augusta National, the most tradition-soaked venue in professional sports. No cell phones. No running. The same azaleas, the same Amen Corner, the same green jacket ceremony since 1949.

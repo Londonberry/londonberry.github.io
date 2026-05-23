@@ -3,6 +3,8 @@ title: "Robot Umps and Digital Avatars: How AI Is Rewriting the Sports Playbook"
 description: "MLB's automated strike zone just went live. FIFA is scanning every player into 3D. 82% of sports organizations now deploy AI. The transformation is here."
 date: 2026-02-24
 author: "Ben McDonald"
+tags: ["Sports Tech", "AI", "MLB"]
+updated: 2026-05-05
 ---
 
 Opening Day 2026 arrived with a guest that's been arguing its way into baseball for years: [the Automated Ball-Strike Challenge System](https://www.mlb.com/news/abs-challenge-system-mlb-2026). Twelve Hawk-Eye cameras per stadium now track the strike zone. Players challenge calls by tapping their helmet. In the first 47 games, 94 calls were overturned.

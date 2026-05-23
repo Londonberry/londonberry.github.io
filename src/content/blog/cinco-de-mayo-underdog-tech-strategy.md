@@ -3,6 +3,7 @@ title: "Cinco de Mayo Is the Best Tech Strategy Story You're Not Telling"
 description: "On May 5, 1862, an outnumbered Mexican militia stopped the best army in the world on a muddy hill in Puebla. The lesson for small teams in 2026: terrain beats troop count, and AI is your terrain."
 date: 2026-05-05
 author: "Ben McDonald"
+tags: ["AI Strategy", "Startups", "Small Teams"]
 ---
 
 Most Americans think Cinco de Mayo is Mexican Independence Day. It isn't. (That's September 16.) May 5 commemorates the **Battle of Puebla**. That's the day an outnumbered, outgunned Mexican militia stopped the most feared army in the world on a muddy hill.

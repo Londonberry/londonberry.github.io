@@ -3,6 +3,8 @@ title: "Security Debt Is the New Technical Debt"
 description: "82% of organizations carry security debt. 1 in 3 AI-generated code snippets has a flaw. Speed without review is a time bomb."
 date: 2026-03-28
 author: "Ben McDonald"
+tags: ["Security", "AI", "Engineering"]
+updated: 2026-05-05
 ---
 
 Everyone in software knows what technical debt is. You cut a corner to ship faster, you write a TODO comment, and someday you'll come back and fix it. Sometimes you do. Usually you don't. The codebase gets a little worse, and life goes on.
