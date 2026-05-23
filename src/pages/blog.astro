@@ -13,17 +13,20 @@ const posts = (await getCollection('blog')).sort(
 >
   <!-- Page header -->
   <section class="pt-16 md:pt-20 pb-4">
-    <div class="max-w-3xl mx-auto px-6">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
       <h1 class="text-4xl md:text-6xl font-black text-heading leading-tight">Insights.</h1>
       <p class="text-lg md:text-xl text-body/80 mt-4 leading-relaxed">
         Thoughts on AI-assisted development, sports technology, and building software at startup speed.
       </p>
+      </div>
     </div>
   </section>
 
   <!-- Posts -->
   <section class="py-16 md:py-24">
-    <div class="max-w-3xl mx-auto px-6">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
       {posts.map((post) => (
         <article class="border-b border-muted/30 py-10 first:pt-0 last:border-0">
           <time class="text-xs font-bold uppercase tracking-widest text-heading/60" datetime={post.data.date.toISOString()}>
@@ -40,6 +43,7 @@ const posts = (await getCollection('blog')).sort(
           </a>
         </article>
       ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
