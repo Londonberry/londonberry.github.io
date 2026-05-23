@@ -11,6 +11,14 @@ design/
 .env
 .env.*
 
+# Secrets / local config
+hubspot.config.yml
+*.config.yml
+
+# Local working files
+Ben-headshot-*.png
+_bmad-output/
+
 # Editor
 .DS_Store
 *.swp
