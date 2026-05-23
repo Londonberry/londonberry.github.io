@@ -135,7 +135,7 @@ const navItems = [
           <img src="/images/brand/logomark-white.svg" alt="" class="h-14 w-14" />
           <span class="text-white font-black text-3xl tracking-tight uppercase">Londonberry</span>
         </a>
-        <div class="hidden lg:flex items-center gap-2">
+        <div class="hidden xl:flex items-center gap-2">
           {navItems.map(item => {
             const isActive = currentPath === item.href;
             return (
@@ -151,14 +151,14 @@ const navItems = [
           <a href="/contact" class="bg-white text-primary px-5 py-2 rounded-md text-sm font-bold uppercase tracking-wide hover:bg-white/90 transition-colors">Contact</a>
         </div>
         <!-- Mobile menu button -->
-        <button id="mobile-menu-btn" class="lg:hidden text-white" aria-label="Toggle menu">
+        <button id="mobile-menu-btn" class="xl:hidden text-white" aria-label="Toggle menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </nav>
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
+      <div id="mobile-menu" class="hidden xl:hidden px-6 pb-4">
         <div class="flex flex-col gap-3">
           {navItems.map(item => (
             <a href={item.href} class={currentPath === item.href ? "text-white text-sm font-bold uppercase tracking-wide" : "text-white/90 hover:text-white text-sm font-semibold uppercase tracking-wide"}>{item.label}</a>

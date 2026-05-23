@@ -36,10 +36,14 @@
   justify-content: flex-start;
   text-decoration: none;
   /* Fixed dimensions for all items */
-  width: 120px;
+  width: 100px;
   height: 44px;
   padding: 8px 0 0;
   margin: 0;
+}
+
+@media (min-width: 1440px) {
+  .nav-item { width: 120px; }
 }
 
 /* The label text stays put */
