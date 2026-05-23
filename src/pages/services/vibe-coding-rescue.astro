@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: "What counts as a vibe-coded app?",
+    a: "Anything built primarily by prompting an AI tool: Lovable, Bolt, v0, Cursor, Replit Agent, Claude Code, Windsurf, Devin. Usually a single founder or small team got a working demo out fast, then hit a wall around auth, payments, data integrity, scale, security, or just shipping a second version without breaking the first.",
+  },
+  {
+    q: "When should I bring in help?",
+    a: "When the prototype is working but you can't safely change it, when users start hitting bugs you can't reproduce, when you need real auth or payments, when you're about to demo to investors or paying customers, or when you realize there are no tests and no deploy pipeline. Sooner is cheaper than later.",
+  },
+  {
+    q: "Will you rewrite everything from scratch?",
+    a: "Almost never. We keep what works, lock down what doesn't, add the missing safety nets (tests, CI, error tracking, backups), and refactor the riskiest pieces. Full rewrites are slow and rarely beat a disciplined incremental hardening pass.",
+  },
+  {
+    q: "Which stacks do you work in?",
+    a: "Most vibe-coded apps land on Next.js, Astro, React, Supabase, Postgres, Prisma, Vercel, or similar. We're stack-flexible, but if the existing code is unsalvageable we'll tell you up front instead of bandaging it.",
+  },
+  {
+    q: "How fast can you start?",
+    a: "Usually within a week. First step is a paid audit: we read the repo, run it, and hand back a written report with risk ranking, quick wins, and a fixed-scope proposal for the rescue work.",
+  },
+  {
+    q: "What does it cost?",
+    a: "Audits are flat-fee. Rescue engagements are scoped to the audit findings: typically 2-6 weeks of focused work, billed weekly. We're transparent about scope before you commit.",
+  },
+];
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Vibe Coding Rescue",
+      "serviceType": "Software Development Consulting",
+      "description": "Take a vibe-coded MVP from working demo to production-ready software. Audit, harden, and ship apps built with Lovable, Bolt, Cursor, Claude Code, v0, Replit Agent, and similar AI coding tools.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Londonberry",
+        "url": "https://londonberry.com",
+      },
+      "areaServed": "Worldwide",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Founders and small teams with AI-generated prototypes",
+      },
+      "url": "https://londonberry.com/services/vibe-coding-rescue/",
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Vibe Coding Rescue"
+  description="Vibe-coded MVP stuck? We take apps built with Lovable, Bolt, Cursor, Claude Code, or v0 from working demo to production. Audit, harden, ship."
+  jsonLd={serviceLd}
+>
+  <!-- Hero -->
+  <section class="bg-primary text-white">
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+      <p class="text-xs font-bold uppercase tracking-widest text-white/70 mb-3">Vibe Coding Rescue</p>
+      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">Your vibe-coded MVP works.<br/><span class="text-white/60">Now let's make it shippable.</span></h1>
+      <p class="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed mb-8">
+        Built something with Lovable, Bolt, Cursor, Claude Code, v0, or Replit Agent? Hit the wall where the next change breaks the last one? That's where we come in. We harden, refactor, and ship AI-generated prototypes into production software your users can actually trust.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/contact" class="bg-white text-primary px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors text-center inline-flex items-center justify-center leading-none">
+          Book a Rescue Audit
+        </a>
+        <a href="#faq" class="border-2 border-white text-white px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/10 transition-colors text-center inline-flex items-center justify-center leading-none">
+          Common Questions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Symptoms -->
+  <section class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">Sound Familiar?</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10 max-w-3xl">If two or more of these are true, you need a rescue pass.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        {[
+          "Every new feature breaks an old one.",
+          "Auth, payments, or data integrity feel held together with tape.",
+          "No tests. No CI. Deploys happen by clicking around.",
+          "Secrets and API keys are in the repo (or you're not sure).",
+          "You can't tell whether the database has backups.",
+          "Real users are hitting bugs you can't reproduce.",
+          "Investors or paying customers are about to see this.",
+          "You stopped touching the code because you don't trust yourself not to break it.",
+        ].map((s) => (
+          <div class="flex items-start gap-3 bg-muted/10 p-5 rounded-lg">
+            <span class="text-primary font-bold mt-0.5">!</span>
+            <p class="text-body/85 leading-relaxed">{s}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">How It Works</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10 max-w-3xl">Three steps, no mystery.</p>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div>
+          <p class="text-5xl font-black text-primary/30 mb-3">01</p>
+          <h3 class="text-xl font-bold text-heading mb-3">Audit (week 1)</h3>
+          <p class="text-body/80 leading-relaxed">Flat-fee read of the repo, the running app, and the data model. You get a written risk report ranked by blast radius, plus a fixed-scope rescue proposal.</p>
+        </div>
+        <div>
+          <p class="text-5xl font-black text-primary/30 mb-3">02</p>
+          <h3 class="text-xl font-bold text-heading mb-3">Harden (weeks 2-4)</h3>
+          <p class="text-body/80 leading-relaxed">Lock down auth, secrets, backups, and the highest-risk code paths. Add tests around the parts you're scared to touch. Set up CI and a real deploy pipeline.</p>
+        </div>
+        <div>
+          <p class="text-5xl font-black text-primary/30 mb-3">03</p>
+          <h3 class="text-xl font-bold text-heading mb-3">Ship (weeks 4+)</h3>
+          <p class="text-body/80 leading-relaxed">Refactor the parts that need it, add the missing features your AI tool couldn't finish, and hand back a codebase you (or your next hire) can actually maintain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 md:py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">FAQ</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10">Common questions.</p>
+      <div class="space-y-8">
+        {faqs.map((f) => (
+          <div class="border-b border-muted/30 pb-6">
+            <h3 class="text-lg font-bold text-heading mb-3">{f.q}</h3>
+            <p class="text-body/80 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="bg-muted/10 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-6">Related</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/services/fractional-cto/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">Fractional CTO</h3>
+          <p class="text-sm text-body/70">Ongoing senior engineering judgment without a full-time hire.</p>
+        </a>
+        <a href="/work/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">Our Work</h3>
+          <p class="text-sm text-body/70">Projects we've shipped across sports tech, streaming, and social.</p>
+        </a>
+        <a href="/blog/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">Insights</h3>
+          <p class="text-sm text-body/70">Notes on AI-assisted development, prototyping, and shipping.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-heading text-white py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Send us the repo.</h2>
+      <p class="text-lg text-white/80 mb-8 max-w-xl mx-auto">
+        Audit turnaround is usually under a week. No NDA needed to start the conversation.
+      </p>
+      <a href="/contact" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
+        Book a Rescue Audit
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: "What does a fractional CTO actually do?",
+    a: "Senior engineering judgment, on retainer. We set technical direction, vet hires, review architecture decisions, unblock the team, talk to investors about the stack, run code reviews, and own the parts of the roadmap a part-time founder can't get to. The point is to give you a CTO's calls without a CTO's salary.",
+  },
+  {
+    q: "Who is this for?",
+    a: "Pre-seed to Series A founders who are technical enough to ship something but need a seasoned counterweight. Non-technical founders with a vibe-coded MVP who need someone trustworthy in the technical seat. Small teams between their first engineer and a full-time CTO hire.",
+  },
+  {
+    q: "How is this different from a contractor or agency?",
+    a: "Contractors execute against a spec you write. A fractional CTO writes the spec, picks the contractor, and owns the outcome. We're accountable to your business goals, not a sprint board.",
+  },
+  {
+    q: "How many hours per week?",
+    a: "Most engagements run 8-20 hours per week. We scope based on stage: pre-launch is heavier (architecture, hiring, vendor selection), post-launch is steadier (reviews, incident response, hiring, roadmap). We're transparent about time and what it bought you.",
+  },
+  {
+    q: "AI-native? What does that mean here?",
+    a: "We run our own engineering with AI tools (Claude Code, Cursor, Codex) and we set up your team to do the same safely. That means evaluating AI codegen tools, writing internal guardrails, choosing what's safe to vibe-code vs. what isn't, and avoiding the security and reliability debt that comes from AI-generated code without review.",
+  },
+  {
+    q: "What does it cost?",
+    a: "Monthly retainers, scoped to hours. No long-term contract: month-to-month after the first 90 days. We'd rather you stay because we're earning it than because you're locked in.",
+  },
+  {
+    q: "Can you also hire and manage engineers for us?",
+    a: "Yes. Sourcing, interviewing, leveling, onboarding, and ongoing technical management of contractors or full-time hires. This is one of the most common asks from founders who've never managed engineers before.",
+  },
+];
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Fractional CTO Services",
+      "serviceType": "Fractional CTO",
+      "description": "Part-time CTO services for AI-native startups. Technical strategy, architecture, hiring, and AI-assisted engineering leadership without a full-time executive hire.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Londonberry",
+        "url": "https://londonberry.com",
+      },
+      "areaServed": "Worldwide",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Pre-seed to Series A founders",
+      },
+      "url": "https://londonberry.com/services/fractional-cto/",
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Fractional CTO"
+  description="Fractional CTO services for AI-native startups. Senior engineering judgment, architecture, hiring, and AI-assisted development leadership without a full-time hire."
+  jsonLd={serviceLd}
+>
+  <!-- Hero -->
+  <section class="bg-heading text-white">
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+      <p class="text-xs font-bold uppercase tracking-widest text-accent mb-3">Fractional CTO</p>
+      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">A CTO's judgment.<br/><span class="text-white/60">Without the CTO's salary.</span></h1>
+      <p class="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed mb-8">
+        Fractional CTO services for founders building AI-native products. Architecture, hiring, vendor choices, code review, and roadmap ownership, on retainer. Built for the stage where a full-time CTO is too early but flying blind is too risky.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/contact" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors text-center inline-flex items-center justify-center leading-none">
+          Book an Intro Call
+        </a>
+        <a href="#faq" class="border-2 border-white text-white px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/10 transition-colors text-center inline-flex items-center justify-center leading-none">
+          Common Questions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we own -->
+  <section class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">What We Own</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10 max-w-3xl">The technical seat, fully, for a slice of the hours.</p>
+      <div class="grid md:grid-cols-2 gap-8">
+        {[
+          { h: "Architecture & stack decisions", b: "Pick the boring choices on purpose. Avoid the bills that come due in 18 months." },
+          { h: "Hiring and team management", b: "Source, interview, level, onboard, and manage engineers. Most founders save the retainer in one bad-hire avoided." },
+          { h: "AI tooling and guardrails", b: "Evaluate Claude Code, Cursor, Codex, and the next wave. Set up the rules that keep AI-generated code from quietly breaking production." },
+          { h: "Code review and quality bar", b: "PR review on the changes that matter. Catch security issues, performance traps, and shortcuts before they ship." },
+          { h: "Investor and board comms", b: "Translate the engineering story for non-technical investors. Answer the diligence questions you don't want to wing." },
+          { h: "Incident response and on-call structure", b: "Set up monitoring, paging, and runbooks before the 2am outage, not after." },
+        ].map((x) => (
+          <div class="border-l-4 border-primary/30 pl-5">
+            <h3 class="font-bold text-heading mb-2">{x.h}</h3>
+            <p class="text-body/80 leading-relaxed">{x.b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who this is for -->
+  <section class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">Who This Is For</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10 max-w-3xl">Three founder profiles we work with most.</p>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div>
+          <h3 class="text-xl font-bold text-heading mb-3">Solo technical founder</h3>
+          <p class="text-body/80 leading-relaxed">You ship the code. You also do everything else. You need a counterweight who can review the calls you're too in-the-weeds to second-guess.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-heading mb-3">Non-technical founder with a vibe-coded MVP</h3>
+          <p class="text-body/80 leading-relaxed">You got the demo working. You need someone you trust in the technical seat before you raise, hire, or onboard real customers. Often pairs with our <a href="/services/vibe-coding-rescue/" class="text-primary font-semibold hover:underline">vibe coding rescue</a> work.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-heading mb-3">Small team, no CTO yet</h3>
+          <p class="text-body/80 leading-relaxed">Two to five engineers. Velocity is fine but architecture is drifting. You need senior judgment before you commit to choices you can't unwind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 md:py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">FAQ</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10">Common questions.</p>
+      <div class="space-y-8">
+        {faqs.map((f) => (
+          <div class="border-b border-muted/30 pb-6">
+            <h3 class="text-lg font-bold text-heading mb-3">{f.q}</h3>
+            <p class="text-body/80 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="bg-muted/10 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-6">Related</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/services/vibe-coding-rescue/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">Vibe Coding Rescue</h3>
+          <p class="text-sm text-body/70">Take an AI-generated MVP from working demo to production-ready software.</p>
+        </a>
+        <a href="/services/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">All Services</h3>
+          <p class="text-sm text-body/70">Rapid prototyping, AI strategy, product management.</p>
+        </a>
+        <a href="/about/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">About Ben</h3>
+          <p class="text-sm text-body/70">Founder background and engineering experience.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary text-white py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Want to talk?</h2>
+      <p class="text-lg text-white/85 mb-8 max-w-xl mx-auto">
+        First call is free, no pitch. We'll tell you whether a fractional CTO is actually what you need, or something cheaper would work.
+      </p>
+      <a href="/contact" class="bg-white text-primary px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
+        Book an Intro Call
+      </a>
+    </div>
+  </section>
+</BaseLayout>
