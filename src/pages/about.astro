@@ -1,17 +1,50 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ben McDonald",
+  "jobTitle": "Fractional CTO and Founder",
+  "url": "https://londonberry.com/about/",
+  "image": "https://londonberry.com/images/ben.jpg",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Londonberry",
+    "url": "https://londonberry.com",
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Jacksonville",
+    "addressRegion": "FL",
+    "addressCountry": "US",
+  },
+  "knowsAbout": [
+    "Fractional CTO",
+    "AI-Assisted Development",
+    "Vibe Coding Rescue",
+    "Rapid Prototyping",
+    "Sports Technology",
+    "Product Management",
+  ],
+  "sameAs": [
+    "https://github.com/Londonberry",
+    "https://www.linkedin.com/company/londonberry",
+  ],
+};
 ---
 
 <BaseLayout
   title="About"
-  description="Londonberry was founded in 2010 by Ben McDonald in Jacksonville, FL. We build custom software using AI-assisted development, specializing in sports technology."
+  description="Ben McDonald: fractional CTO, founder of Londonberry, 25 years of engineering judgment backed by AI agents. Based in Jacksonville, FL."
+  jsonLd={personLd}
 >
   <!-- Page header -->
   <section class="pt-16 md:pt-20 pb-4">
     <div class="max-w-6xl mx-auto px-6">
       <h1 class="text-4xl md:text-6xl font-black text-heading leading-tight">Who we are.</h1>
       <p class="text-lg md:text-xl text-body/80 mt-4 max-w-2xl leading-relaxed">
-        Londonberry is Ben McDonald. 25 years of engineering judgment, backed by a stack of AI agents, based in Jacksonville, FL.
+        Londonberry is Ben McDonald: fractional CTO and founder, 25 years of engineering judgment, backed by a stack of AI agents, based in Jacksonville, FL.
       </p>
     </div>
   </section>
@@ -50,11 +83,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             class="w-32 h-32 rounded-full object-cover mb-4"
           />
           <h2 class="text-2xl font-bold text-heading">Ben McDonald</h2>
-          <p class="text-sm font-semibold uppercase tracking-wider text-accent mt-1">Founder & Principal</p>
+          <p class="text-sm font-semibold uppercase tracking-wider text-accent mt-1">Fractional CTO & Founder</p>
         </div>
         <div class="md:col-span-3 space-y-6 text-lg text-body/80 leading-relaxed">
           <p>
             I founded Londonberry in 2010 after leaving the management team at Hashrocket to go out on my own. After several years of consulting, I spent nine years as a technology executive before coming back to what I love: building software and helping others build it better.
+          </p>
+          <p>
+            Today I serve as <a href="/services/fractional-cto/" class="text-primary font-semibold hover:underline">fractional CTO</a> for founders shipping AI-native products, and run <a href="/services/vibe-coding-rescue/" class="text-primary font-semibold hover:underline">vibe coding rescue</a> engagements for teams stuck between a working AI-generated MVP and a production-grade product.
           </p>
           <p>
             Today, Londonberry is a one-person shop amplified by AI. I use AI agents and AI-assisted development tools daily, and that's exactly what makes it possible to deliver at the speed and quality of a much larger team.
