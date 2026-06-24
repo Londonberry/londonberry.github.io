@@ -34,6 +34,7 @@ const lastmodMap = buildLastmodMap();
 export default defineConfig({
   site: 'https://londonberry.com',
   output: 'static',
+  trailingSlash: 'always',
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/api/'),

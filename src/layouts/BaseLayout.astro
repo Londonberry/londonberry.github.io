@@ -31,40 +31,71 @@ const {
 
 const siteTitle = 'Londonberry';
 const fullTitle = title === 'Home' ? `${siteTitle} | Build Faster. Think Bigger.` : `${title} | ${siteTitle}`;
-const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
+// Normalize the canonical path to a single trailing-slash form so Google
+// doesn't index /blog/post and /blog/post/ as two separate pages and split
+// the ranking signal between them.
+const normalizedPath = Astro.url.pathname.endsWith('/')
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = canonicalURL || new URL(normalizedPath, Astro.site).href;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const absoluteOgImage = new URL(ogImage, Astro.site).href;
 
+// Brand entity graph. Organization + WebSite both carry the "Londonberry"
+// name and link via @id so Google treats them as one brand, which is what a
+// branded search ("londonberry") needs to render a strong, clickable result.
+// logo points at the real logomark (not the social card); founder, address,
+// and sameAs round out the entity.
+const orgId = "https://londonberry.com/#organization";
 const defaultLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Londonberry",
-  "description": "AI-powered custom software development, rapid prototyping, and strategic consulting for sports technology and startups.",
-  "url": "https://londonberry.com",
-  "logo": "https://londonberry.com/images/social-card.png",
-  "email": "info@londonberry.com",
-  "founder": {
-    "@type": "Person",
-    "name": "Ben McDonald"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Jacksonville",
-    "addressRegion": "FL",
-    "addressCountry": "US"
-  },
-  "areaServed": "Worldwide",
-  "knowsAbout": [
-    "Artificial Intelligence",
-    "Custom Software Development",
-    "Rapid Prototyping",
-    "Sports Technology",
-    "Product Management",
-    "AI Strategy Consulting"
-  ],
-  "sameAs": [
-    "https://github.com/Londonberry",
-    "https://www.linkedin.com/company/londonberry"
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": orgId,
+      "name": "Londonberry",
+      "alternateName": "Londonberry LLC",
+      "description": "Fractional CTO services and AI-assisted software development for startups and sports technology. Rapid prototyping, vibe-coding rescue, AI strategy, and product leadership.",
+      "url": "https://londonberry.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://londonberry.com/images/brand/logomark-color.png",
+        "caption": "Londonberry"
+      },
+      "image": "https://londonberry.com/images/social-card.png",
+      "email": "info@londonberry.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Ben McDonald"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jacksonville",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "areaServed": "Worldwide",
+      "knowsAbout": [
+        "Fractional CTO",
+        "Artificial Intelligence",
+        "Custom Software Development",
+        "Rapid Prototyping",
+        "Sports Technology",
+        "Product Management",
+        "AI Strategy Consulting"
+      ],
+      "sameAs": [
+        "https://github.com/Londonberry",
+        "https://www.linkedin.com/company/londonberry"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://londonberry.com/#website",
+      "name": "Londonberry",
+      "url": "https://londonberry.com",
+      "publisher": { "@id": orgId }
+    }
   ]
 };
 
