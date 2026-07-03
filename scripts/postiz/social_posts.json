@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "world-cup-2026-ai-on-the-pitch",
+    "url": "https://londonberry.com/blog/world-cup-2026-ai-on-the-pitch/",
+    "linkedin": "The 2026 World Cup is the biggest ever: 48 teams, 104 matches, three countries.\n\nIt's also the most instrumented sporting event in history. Cameras track 29 points on every player 50x a second. The ball reports its own touches 500x a second. Offside calls that used to take a linesman and three replays now resolve in seconds.\n\nThe lesson isn't about soccer. Once measurement gets cheap and universal, the edge stops being having the data. It becomes judgment: what you ask of it, how fast you act, whether you trust it enough to change a call.\n\nMost companies are sitting on data they don't act on. Same problem, no stadium.\n\nhttps://londonberry.com/blog/world-cup-2026-ai-on-the-pitch/",
+    "x": "2026 World Cup: 48 teams, 104 matches, and every player tracked 50x/sec.\n\nThe ball reports its own touches 500x/sec.\n\nThe tech lesson has nothing to do with soccer: when data gets cheap and universal, the edge moves from having it to acting on it.\n\nhttps://londonberry.com/blog/world-cup-2026-ai-on-the-pitch/"
+  },
+  {
+    "slug": "college-world-series-2026-omaha-data",
+    "url": "https://londonberry.com/blog/college-world-series-2026-omaha-data/",
+    "linkedin": "The College World Series in Omaha looks exactly like it did 20 years ago. It doesn't run like it did.\n\nEvery pitch is tracked, classified, stored. The scouting report on tomorrow's starter isn't a coach's memory anymore. It's a query: this slider breaks 14 inches, he tips it by slowing his tempo, he throws it 70% of the time when he's behind.\n\nAnd the automated strike zone? Not a someday idea. The sensors that feed the analytics are the same ones that can call a strike. Once they're in the building, it's a software decision.\n\nWhen everyone has the data, the data isn't the edge. The judgment is.\n\nhttps://londonberry.com/blog/college-world-series-2026-omaha-data/",
+    "x": "The College World Series looks like 1995. It runs like a spreadsheet.\n\nEvery pitch tracked. Scouting reports are queries now, not memory. The robot strike zone is close because the analytics sensors already call strikes.\n\nWhen everyone has the data, judgment is the edge.\n\nhttps://londonberry.com/blog/college-world-series-2026-omaha-data/"
+  },
+  {
+    "slug": "top-10-ai-uses-in-sports",
+    "url": "https://londonberry.com/blog/top-10-ai-uses-in-sports/",
+    "linkedin": "Most \"AI in sports\" articles list things that might happen. I wrote one about what's already running in real games right now.\n\nOfficiating. Injury prevention. Auto-generated highlights. Scouting. Dynamic ticket pricing. Markerless biomechanics off a phone camera.\n\nThe pattern across all 10: none of them replace the human. The ref still rules, the coach still calls it, the scout still judges character. AI just hands them a measurement they couldn't get before.\n\nThat's the test for your own product too. Not \"what can AI do,\" but \"which decision is slow, expensive, or guesswork, and could a measurement fix it.\"\n\nhttps://londonberry.com/blog/top-10-ai-uses-in-sports/",
+    "x": "10 ways AI is actually used in sports right now (not someday):\n\nofficiating, injury prediction, auto highlights, scouting, dynamic pricing, biomechanics off a phone camera...\n\nThe pattern: none replace the human. They remove friction from a call someone already had to make.\n\nhttps://londonberry.com/blog/top-10-ai-uses-in-sports/"
+  }
+]
