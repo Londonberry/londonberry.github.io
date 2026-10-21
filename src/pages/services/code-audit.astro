@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    q: "What is a code audit?",
+    a: "A structured review of your codebase for security holes, reliability risks, performance traps, and the accumulated shortcuts that slow every future change. You get a written report with prioritized findings and a fix plan, not a vague 'it needs work' verdict.",
+  },
+  {
+    q: "How is this different from a security pen test?",
+    a: "A pen test attacks the running app from the outside. A code audit reads the source: auth logic, data handling, dependency risk, secrets management, and the structural debt a pen test never sees. The two are complementary. We focus on the code and architecture.",
+  },
+  {
+    q: "What is security technical debt?",
+    a: "The security shortcuts that pile up when a team ships fast: missing input validation, secrets in the repo, outdated dependencies, auth checks copy-pasted with subtle gaps. It is invisible until it isn't. AI-generated code is especially prone to it because the tool optimizes for working, not safe.",
+  },
+  {
+    q: "Who needs a code audit?",
+    a: "Founders about to raise (investors run technical diligence). Teams that inherited a codebase or a vibe-coded MVP. Anyone onboarding real customers or handling sensitive data who has never had a second set of senior eyes on the code. And teams shipping a lot of AI-generated code without a review gate.",
+  },
+  {
+    q: "What do I get at the end?",
+    a: "A prioritized findings report: each issue rated by severity and effort, with the specific files and a recommended fix. A short readout call to walk through it. Optionally, we do the fixes too, or set up the guardrails so the debt stops accruing.",
+  },
+  {
+    q: "How long does it take?",
+    a: "Most audits run one to two weeks depending on codebase size. We scope up front from a look at the repo so you know the cost and timeline before we start.",
+  },
+  {
+    q: "Can you fix what you find?",
+    a: "Yes. The audit stands alone, but most clients have us remediate the high-severity findings and set up the review process and tooling that keeps new debt from piling back up.",
+  },
+];
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Code Audit & Security Review",
+      "serviceType": "Code Audit",
+      "description": "Code audit and security review for startups and AI-generated codebases. Find security technical debt, reliability risks, and structural shortcuts, with a prioritized fix plan.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Londonberry",
+        "url": "https://londonberry.com",
+      },
+      "areaServed": "Worldwide",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Founders and teams with growing or AI-generated codebases",
+      },
+      "url": "https://londonberry.com/services/code-audit/",
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Code Audit & Security Review"
+  description="Code audit and security review for startups and AI-generated codebases. Find security technical debt, reliability risks, and structural shortcuts before they cost you, with a prioritized fix plan."
+  jsonLd={serviceLd}
+>
+  <!-- Hero -->
+  <section class="bg-heading text-white">
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+      <p class="text-xs font-bold uppercase tracking-widest text-accent mb-3">Code Audit &amp; Security Review</p>
+      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">Find the debt <span class="text-white/60">before it finds you.</span></h1>
+      <p class="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed mb-8">
+        A senior read of your codebase for security holes, reliability risks, and the structural shortcuts that slow every change. You get a prioritized findings report and a fix plan, not a vague verdict. Built for fast-moving teams and AI-generated codebases.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/contact" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors text-center inline-flex items-center justify-center leading-none">
+          Book an Intro Call
+        </a>
+        <a href="#faq" class="border-2 border-white text-white px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/10 transition-colors text-center inline-flex items-center justify-center leading-none">
+          Common Questions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we audit -->
+  <section class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">What We Audit</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10 max-w-3xl">Where the debt hides, and what we check.</p>
+      <div class="grid md:grid-cols-2 gap-8">
+        {[
+          { h: "Security and auth", b: "Authentication and authorization logic, input validation, secrets management, and the auth gaps that copy-paste leaves behind." },
+          { h: "Dependency and supply-chain risk", b: "Outdated and vulnerable packages, unpinned versions, and the libraries you depend on without knowing it." },
+          { h: "Data handling and privacy", b: "How sensitive data is stored, logged, and moved. The places a breach or a compliance problem would start." },
+          { h: "Reliability and error handling", b: "Unhandled failures, silent catches, missing timeouts, and the paths that break under real load." },
+          { h: "Performance traps", b: "N+1 queries, unbounded loops, and the choices that are fine at demo scale and fall over with real users." },
+          { h: "Structural and AI-generated debt", b: "Duplicated logic, tangled coupling, and the shortcuts AI codegen adds when it optimizes for working over safe and maintainable." },
+        ].map((x) => (
+          <div class="border-l-4 border-primary/30 pl-5">
+            <h3 class="font-bold text-heading mb-2">{x.h}</h3>
+            <p class="text-body/80 leading-relaxed">{x.b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">How It Works</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10 max-w-3xl">Scope, audit, report, fix.</p>
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <h3 class="text-xl font-bold text-heading mb-3">1. Scope</h3>
+          <p class="text-body/80 leading-relaxed">A look at the repo and a short call. You get the cost and timeline before anything starts.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-heading mb-3">2. Audit</h3>
+          <p class="text-body/80 leading-relaxed">A senior read of the code and architecture across security, reliability, performance, and structure.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-heading mb-3">3. Report</h3>
+          <p class="text-body/80 leading-relaxed">A prioritized findings report, each issue rated by severity and effort with the files and a recommended fix, plus a readout call.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-heading mb-3">4. Fix</h3>
+          <p class="text-body/80 leading-relaxed">Optional. We remediate the high-severity findings and set up the guardrails that keep new debt from piling back up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 md:py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">FAQ</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10">Common questions.</p>
+      <div class="space-y-8">
+        {faqs.map((f) => (
+          <div class="border-b border-muted/30 pb-6">
+            <h3 class="text-lg font-bold text-heading mb-3">{f.q}</h3>
+            <p class="text-body/80 leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="bg-muted/10 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-6">Related</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/blog/security-debt-is-the-new-technical-debt/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">Security Debt Is the New Technical Debt</h3>
+          <p class="text-sm text-body/70">Why AI-generated code accrues security debt, and what to do about it.</p>
+        </a>
+        <a href="/services/vibe-coding-rescue/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">Vibe Coding Rescue</h3>
+          <p class="text-sm text-body/70">Take an AI-generated MVP from working demo to production-ready software.</p>
+        </a>
+        <a href="/services/fractional-cto/" class="block p-6 bg-white rounded-lg hover:shadow-md transition-shadow">
+          <h3 class="font-bold text-heading mb-2">Fractional CTO</h3>
+          <p class="text-sm text-body/70">Senior engineering judgment on retainer, including ongoing code review.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary text-white py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Want eyes on your code?</h2>
+      <p class="text-lg text-white/85 mb-8 max-w-xl mx-auto">
+        First call is free. Send the repo, we'll scope an audit and tell you what we'd look at first.
+      </p>
+      <a href="/contact" class="bg-white text-primary px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
+        Book an Intro Call
+      </a>
+    </div>
+  </section>
+</BaseLayout>

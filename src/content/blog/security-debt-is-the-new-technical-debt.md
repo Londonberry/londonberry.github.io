@@ -50,3 +50,5 @@ Here's a question for every founder and CTO rushing to ship AI-generated code: w
 If the answer is "we'll deal with that later," congratulations: you're accumulating security debt at a rate that would have been physically impossible two years ago.
 
 Technical debt slows you down. Security debt can shut you down. The tools have changed. The stakes haven't.
+
+Want a second set of eyes on your codebase before it ships? That is what a [Code Audit](/services/code-audit/) is for.
