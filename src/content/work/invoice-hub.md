@@ -37,8 +37,8 @@ A hub that reads each vendor invoice and lines it up with the right bill.
 
 The first invoice came in Oct 18, 2026. Writing to QuickBooks started Oct 26. Through Nov 5:
 
-- **235 vendor invoices read**, across 47 brands. Another 28 that weren't bills (statements, order confirmations, flyers) were sorted out on their own.
-- **80 written to QuickBooks**, every one approved first: 63 existing bills corrected, and 17 new bills created.
+- **251 PDFs came in.** 28 were statements, order confirmations, or flyers and got set aside on their own. The rest were read as invoices, from 47 brands.
+- **80 written to QuickBooks**, every one approved first: 63 existing bills filled in with the invoice details, and 17 new bills created.
 - **14 closed on their own**, because the bill was already handled in QuickBooks.
 
 > "The invoice part of the hub is fantastic!"
