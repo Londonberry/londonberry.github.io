@@ -92,7 +92,7 @@ const tracks = [
     </div>
   </section>
 
-  {tracks.map((track) => (
+  {tracks.filter((t) => t.cards.length > 0).map((track) => (
     <section id={track.id} class="py-14 md:py-20 border-b border-muted/30 last:border-0">
       <div class="max-w-6xl mx-auto px-6">
         <p class="text-xs font-bold uppercase tracking-widest text-heading/60">{track.label}</p>
