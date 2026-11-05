@@ -1,5 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCaseStudies } from '../../lib/work';
+
+// Each pattern links to its case study once that case study is approved.
+const live = new Set((await getCaseStudies()).map((s) => s.id));
+const patterns = [
+  { title: 'One door to the AI model', body: 'Every AI call goes through one place. You control the model version, the logging, and the bill.', id: 'ai-guardrails' },
+  { title: 'A spend cap per customer', body: 'Checked before every call, so one heavy user never runs up your bill or blocks anyone else.', id: 'ai-guardrails' },
+  { title: 'AI proposes, a person approves', body: 'The AI reads and suggests. Nothing touches your data or your books until a person says yes.', id: 'invoice-hub' },
+  { title: 'Hold and alert, never guess', body: 'When a check fails, the work waits and someone gets an alert. Nothing goes out on its own say-so.', id: 'content-pipeline' },
+  { title: 'Guardrails that fail the build', body: "The safety rules are tests. If one breaks, the change doesn't ship.", id: 'ai-guardrails' },
+].map((p) => ({ ...p, href: live.has(p.id) ? `/work/${p.id}/` : undefined }));
 
 const faqs = [
   {
@@ -130,6 +141,23 @@ const serviceLd = {
           <h3 class="text-xl font-bold text-heading mb-3">Ship (weeks 4+)</h3>
           <p class="text-body/80 leading-relaxed">Refactor the parts that need it, add the missing features your AI tool couldn't finish, and hand back a codebase you (or your next hire) can actually maintain.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What production looks like -->
+  <section id="production" class="py-20 md:py-24 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">What Production Looks Like</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10">The patterns we add to every AI app.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {patterns.map((p) => (
+          <div class="rounded-xl border border-muted/40 p-6">
+            <h3 class="text-lg font-bold text-heading">{p.title}</h3>
+            <p class="text-body/80 leading-relaxed mt-2">{p.body}</p>
+            {p.href && <a href={p.href} class="inline-block mt-3 text-primary font-semibold text-sm hover:underline">See it in a real build &rarr;</a>}
+          </div>
+        ))}
       </div>
     </div>
   </section>

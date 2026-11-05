@@ -1,20 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCaseStudies } from '../lib/work';
+
+// Proof tiles link to case studies. A tile shows only once its case study is
+// approved (or in a preview build), so the home page never links to a 404.
+const live = new Set((await getCaseStudies()).map((s) => s.id));
+const proof = [
+  { title: 'One door to the AI model', body: 'Every AI call goes through one place, with a spend cap per customer checked first.', id: 'ai-guardrails' },
+  { title: 'AI proposes, a person approves', body: 'Nothing touches the books until someone at the store says yes.', id: 'invoice-hub' },
+  { title: 'Holds instead of publishing', body: 'If a post fails the compliance check, it waits and we get an alert.', id: 'content-pipeline' },
+  { title: 'Guardrails that fail the build', body: "If a safety rule breaks, the change doesn't ship.", id: 'ai-guardrails' },
+].filter((t) => live.has(t.id));
 ---
 
 <BaseLayout
   title="Home"
-  description="Fractional CTO and AI-assisted development for founders shipping vibe-coded ideas to production. Rapid prototyping, AI strategy, and product leadership for startups and sports tech."
+  description="You built the prototype with AI. Londonberry takes it to production: security, spend limits, tests, and a person in the loop. Plus the sports apps we've built."
 >
   <!-- Hero -->
   <section class="bg-primary text-white">
     <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
-      <p class="text-xs md:text-sm font-bold uppercase tracking-widest text-white/70 mb-4">Fractional CTO &amp; AI Development</p>
+      <p class="text-xs md:text-sm font-bold uppercase tracking-widest text-white/70 mb-4">Prototype to production &middot; Sports software</p>
       <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
-        Build faster. <span class="text-white/50">Think bigger.</span>
+        You built the prototype. <span class="text-white/60">We'll take it to production.</span>
       </h1>
-      <p class="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed mb-8">
-        Fractional CTO services and AI-assisted development for founders shipping vibe-coded ideas to production. From rapid prototypes to production-ready platforms, at startup speed.
+      <p class="text-lg md:text-xl text-white/85 leading-relaxed mb-8">
+        AI got you a working demo. We add the parts that keep it working: security, spend limits, tests, and a person in the loop.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a href="/contact" class="bg-white text-primary px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors text-center inline-flex items-center justify-center leading-none">
@@ -26,6 +37,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  {proof.length > 0 && (
+    <section class="border-b border-muted/30 py-12 md:py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-6">What production looks like</h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {proof.map((t) => (
+            <a href={`/work/${t.id}/`} class="group block rounded-xl border border-muted/40 p-5 hover:border-primary/60 transition-colors">
+              <h3 class="font-bold text-heading group-hover:text-primary transition-colors">{t.title}</h3>
+              <p class="text-sm text-body/80 mt-2 leading-relaxed">{t.body}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Services Overview -->
   <section class="py-20 md:py-28">
@@ -96,16 +123,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Sports Tech Callout -->
   <section class="bg-heading text-white py-20 md:py-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-3xl">
-        <h2 class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Our Sweet Spot</h2>
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Sports apps we've built</h2>
         <p class="text-2xl md:text-4xl font-bold leading-tight mb-6">
-          We love building software for sports.
+          Software for coaches, clubs, and fans.
         </p>
         <p class="text-lg text-white/80 leading-relaxed mb-8">
-          From travel ball organization platforms to video streaming ecosystems, we bring deep experience in sports technology. If your idea lives at the intersection of sports and software, we want to hear about it.
+          Scouting reports high school coaches reorder. A platform that runs a travel ball club. Video for teams and leagues.
         </p>
-        <a href="/work" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
-          See Our Work
+        <a href="/work/#sports" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
+          See the sports work
         </a>
       </div>
     </div>
