@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCaseStudies, isPreview } from '../../lib/work';
+
+const studies = await getCaseStudies();
+
+type Card = {
+  name: string;
+  client?: string;
+  summary: string;
+  href?: string;
+  image?: string;
+  imageFallback?: string;
+  label?: string;
+  draft?: boolean;
+};
+
+const fromStudy = (s: (typeof studies)[number]): Card => ({
+  name: s.data.headline,
+  client: s.data.client,
+  summary: s.data.summary,
+  href: `/work/${s.id}/`,
+  image: s.data.image,
+  draft: !s.data.approved,
+});
+
+const production: Card[] = studies.filter((s) => s.data.track === 'production').map(fromStudy);
+
+// Older or smaller sports work with no case study page yet.
+const sportsExtras: Card[] = [
+  {
+    name: 'Winsight',
+    summary: 'A video streaming platform built for sports. Teams, leagues, and fans capture, stream, and analyze game footage.',
+    image: '/winsight-hero.webp',
+    imageFallback: '/winsight-hero.jpg',
+  },
+  {
+    name: 'Baseball team management app',
+    label: 'In the lab',
+    summary: 'Frozn Rope: a team management app for baseball programs. Early, and being rebuilt now.',
+  },
+];
+
+const sports: Card[] = [
+  ...studies.filter((s) => s.data.track === 'sports').map(fromStudy),
+  ...sportsExtras,
+];
+
+const portfolioLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Londonberry Work',
+  url: 'https://londonberry.com/work/',
+  hasPart: studies.map((s) => ({
+    '@type': 'Article',
+    headline: s.data.headline,
+    description: s.data.summary,
+    url: `https://londonberry.com/work/${s.id}/`,
+    about: { '@type': 'Organization', name: s.data.client },
+  })),
+};
+
+const tracks = [
+  {
+    id: 'production',
+    label: 'Prototype to production',
+    title: 'From working demo to something you can trust.',
+    intro: 'AI gets you a prototype fast. These are the parts we add so it holds up with real users, real money, and real rules.',
+    cards: production,
+  },
+  {
+    id: 'sports',
+    label: 'Sports apps',
+    title: "Sports software we've built.",
+    intro: 'Scouting, club operations, rankings, and video, for coaches, clubs, and fans.',
+    cards: sports,
+  },
+];
+---
+
+<BaseLayout
+  title="Work"
+  description="Case studies from Londonberry: taking AI-built prototypes to production, and the sports apps we've built for coaches, clubs, and fans."
+  jsonLd={portfolioLd}
+>
+  <section class="pt-16 md:pt-20 pb-4">
+    <div class="max-w-6xl mx-auto px-6">
+      <h1 class="text-4xl md:text-6xl font-black text-heading leading-tight">What we've built.</h1>
+      <p class="text-lg md:text-xl text-body/80 mt-4 leading-relaxed">
+        Two kinds of work: getting AI-built prototypes ready for real users, and sports apps.
+      </p>
+    </div>
+  </section>
+
+  {tracks.map((track) => (
+    <section id={track.id} class="py-14 md:py-20 border-b border-muted/30 last:border-0">
+      <div class="max-w-6xl mx-auto px-6">
+        <p class="text-xs font-bold uppercase tracking-widest text-heading/60">{track.label}</p>
+        <h2 class="text-2xl md:text-4xl font-black text-heading mt-2">{track.title}</h2>
+        <p class="text-body/80 text-lg mt-3">{track.intro}</p>
+
+        <div class="grid gap-8 md:grid-cols-2 mt-10 items-start">
+          {track.cards.map((card) => {
+            const Tag = card.href ? 'a' : 'div';
+            return (
+              <Tag
+                href={card.href}
+                class:list={[
+                  'group block rounded-xl border border-muted/40 overflow-hidden bg-white',
+                  card.href && 'hover:border-primary/60 hover:shadow-md transition',
+                ]}
+              >
+                {card.image && (
+                  <picture>
+                    {card.imageFallback && <source srcset={card.image} type="image/webp" />}
+                    <img
+                      src={card.imageFallback ?? card.image}
+                      alt=""
+                      class="w-full aspect-video object-cover object-left-top border-b border-muted/30"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                )}
+                <div class="p-6">
+                  <div class="flex flex-wrap items-center gap-2 mb-2">
+                    {card.client && <span class="text-xs font-bold uppercase tracking-widest text-heading/60">{card.client}</span>}
+                    {card.label && <span class="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">{card.label}</span>}
+                    {isPreview && card.draft && <span class="text-xs font-semibold uppercase tracking-wider text-dark bg-accent px-2 py-0.5 rounded">Draft</span>}
+                  </div>
+                  <h3 class="text-xl md:text-2xl font-bold text-heading group-hover:text-primary transition-colors">{card.name}</h3>
+                  <p class="text-body/80 leading-relaxed mt-3">{card.summary}</p>
+                  {card.href && <span class="inline-block mt-4 text-primary font-semibold text-sm">Read the case study &rarr;</span>}
+                </div>
+              </Tag>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="bg-heading text-white py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Have a prototype that needs to hold up?</h2>
+      <p class="text-lg text-white/80 mb-8">Send us the repo. Sports or not.</p>
+      <a href="/contact" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
+        Let's Talk
+      </a>
+    </div>
+  </section>
+</BaseLayout>
