@@ -17,7 +17,7 @@ const d = study.data;
 
 const trackLabel = d.track === 'sports' ? 'Sports app' : 'Prototype to production';
 const cta = d.track === 'sports'
-  ? { title: 'Running a sports program?', body: 'We build and automate the software coaches and clubs run on.', href: '/work/#sports', label: 'See our sports work' }
+  ? { title: 'Running a sports program?', body: 'We build and automate the software coaches and clubs run on.', href: '/sports/', label: 'Sports consulting' }
   : { title: 'Got a prototype that needs to hold up?', body: "Send us the repo. We'll tell you what it needs before real users find out.", href: '/services/vibe-coding-rescue/', label: 'How we do it' };
 const canonicalURL = new URL(`/work/${study.id}/`, Astro.site).href;
 

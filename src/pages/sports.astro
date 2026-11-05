@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCaseStudies, isPreview } from '../lib/work';
+
+// Sports case studies show here once Ben approves them.
+const studies = (await getCaseStudies()).filter((s) => s.data.track === 'sports');
+
+const automate = [
+  { title: 'Registration season', body: 'Tryouts, season signups, waivers, uniforms, and payments in one place, with installment plans for families.' },
+  { title: 'Scouting', body: 'Reports on the team you play next, built from the data and reviewed by a person before they reach you.' },
+  { title: 'Schedules', body: 'Import a tournament schedule. Nothing changes until a director confirms it.' },
+  { title: 'The busywork', body: 'Emails, reminders, and reports that eat your evenings. A person approves anything that matters.' },
+];
+
+const pageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Sports consulting and automation',
+  provider: { '@type': 'Organization', name: 'Londonberry', url: 'https://londonberry.com/' },
+  areaServed: 'US',
+  audience: { '@type': 'Audience', audienceType: 'Coaches, club directors, and athletic directors' },
+  url: 'https://londonberry.com/sports/',
+};
+---
+
+<BaseLayout
+  title="Sports Consulting and Automation"
+  description="Londonberry builds and automates the software coaches, clubs, and athletic directors run on: scouting reports, club registration and payments, schedules, and the busywork in between."
+  jsonLd={pageLd}
+>
+  {isPreview && (
+    <div class="bg-accent text-dark text-sm font-semibold text-center py-2 px-4">
+      Draft for Ben's review. Not live.
+    </div>
+  )}
+
+  <section class="bg-heading text-white">
+    <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+      <p class="text-xs md:text-sm font-bold uppercase tracking-widest text-accent mb-4">For coaches, clubs, and athletic directors</p>
+      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">Sports consulting and automation.</h1>
+      <p class="text-lg md:text-xl text-white/85 leading-relaxed mb-8">
+        We build the software your program runs on, from scouting reports to club operations. Then we automate the busywork, so you can coach.
+      </p>
+      <a href="/contact/" class="bg-white text-heading px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-white/90 transition-colors inline-block">
+        Book a free 30-minute call
+      </a>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 border-b border-muted/30">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">What we automate</h2>
+      <p class="text-2xl md:text-3xl font-bold text-heading mb-10">The work that eats your evenings.</p>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {automate.map((a) => (
+          <div class="rounded-xl border border-muted/40 p-6">
+            <h3 class="text-lg font-bold text-heading">{a.title}</h3>
+            <p class="text-body/80 leading-relaxed mt-2">{a.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {studies.length > 0 && (
+    <section class="py-16 md:py-20 border-b border-muted/30">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-heading/60 mb-2">What we've built</h2>
+        <p class="text-2xl md:text-3xl font-bold text-heading mb-10">Already running for real programs.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          {studies.map((s) => (
+            <a href={`/work/${s.id}/`} class="group block rounded-xl border border-muted/40 p-6 hover:border-primary/60 transition-colors">
+              <p class="text-xs font-bold uppercase tracking-widest text-heading/60">{s.data.client}</p>
+              <h3 class="text-xl font-bold text-heading group-hover:text-primary transition-colors mt-1">{s.data.headline}</h3>
+              <p class="text-body/80 leading-relaxed mt-2">{s.data.summary}</p>
+              <span class="inline-block mt-3 text-primary font-semibold text-sm">Read the case study &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-heading mb-4">Tell us about your program.</h2>
+      <p class="text-lg text-body/70 mb-8">A free 30-minute call. We'll tell you what's worth automating and what isn't.</p>
+      <a href="/contact/" class="bg-primary text-white px-8 py-3 rounded-md font-bold text-sm uppercase tracking-wide hover:bg-primary/90 transition-colors inline-block">
+        Book the call
+      </a>
+    </div>
+  </section>
+</BaseLayout>
