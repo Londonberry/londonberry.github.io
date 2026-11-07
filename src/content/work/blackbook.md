@@ -6,7 +6,7 @@ summary: "A printable report on the team you play Friday. Built for high school 
 track: sports
 order: 10
 stack: ["Next.js", "Postgres", "Stripe", "Claude", "Vercel"]
-approved: false
+approved: true
 ---
 
 ## The problem
