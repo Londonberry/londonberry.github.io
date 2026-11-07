@@ -5,7 +5,7 @@ summary: "Tryouts, season signups, waivers, jerseys, and payments with installme
 track: sports
 order: 11
 stack: ["Next.js", "TypeScript", "Postgres", "Stripe Connect", "Clerk", "Vercel"]
-approved: false
+approved: true
 ---
 
 ## The problem

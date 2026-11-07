@@ -5,7 +5,7 @@ summary: "A multi-club sports platform, built by our team, where the AI can't ru
 track: production
 order: 1
 stack: ["Next.js", "TypeScript", "Postgres", "Claude", "Vercel"]
-approved: false
+approved: true
 ---
 
 ## The problem
