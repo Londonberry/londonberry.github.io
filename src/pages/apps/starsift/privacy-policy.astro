@@ -1,0 +1,70 @@
+---
+import LegalDocument from '../../../components/LegalDocument.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const contactEmail = 'support@londonberry.com';
+---
+
+<BaseLayout
+  title="Starsift Privacy Policy"
+  description="Privacy Policy for Starsift: Sand Sort Puzzle, an iPhone game by Londonberry. The game collects no personal information."
+>
+  <LegalDocument
+    overline="Starsift: Sand Sort Puzzle"
+    title="Privacy Policy"
+    description="Starsift is a sand puzzle game for iPhone. This policy explains what the game does and does not do with your information. The short version: the game collects nothing."
+    effectiveDate="November 10, 2026"
+  >
+    <p>
+      This Privacy Policy applies to Starsift: Sand Sort Puzzle (the "Game"), an iPhone game made by Londonberry, and to this page. It covers the version in the App Store and test versions distributed through Apple's TestFlight.
+    </p>
+
+    <h2>1. Information We Collect</h2>
+    <p>The Game does not collect, store, or send any personal information. Specifically:</p>
+    <ul>
+      <li><strong>No account.</strong> You do not sign in, and the Game never asks for your name, email address, or phone number.</li>
+      <li><strong>No ads and no tracking.</strong> The Game contains no advertising, no advertising identifiers, and no analytics or tracking tools from us or anyone else.</li>
+      <li><strong>No network use.</strong> The Game does not connect to our servers or to any third-party service while you play.</li>
+      <li><strong>No device permissions.</strong> The Game does not ask for your location, contacts, photos, camera, or microphone.</li>
+    </ul>
+
+    <h2>2. What Stays on Your Device</h2>
+    <p>
+      The Game saves your progress on your own device: which nights you have cleared, how many embers are in the lantern, and your sound setting. This information never leaves your device and we cannot see it. Deleting the Game deletes it.
+    </p>
+
+    <h2>3. What Apple Collects</h2>
+    <p>
+      Apple runs the App Store and TestFlight and handles downloads and any purchase. Apple may collect information under its own privacy policy. Two cases are worth knowing about:
+    </p>
+    <ul>
+      <li><strong>TestFlight.</strong> If you test the Game through TestFlight, Apple shares crash reports and any feedback or screenshots you choose to send with us, along with basic device details such as the iPhone model and iOS version. If you were invited by email, we also see that email address. We use this only to fix problems in the Game.</li>
+      <li><strong>App Store.</strong> If you have turned on sharing with app developers in your iPhone's settings, Apple may give us crash and usage statistics that do not identify you.</li>
+    </ul>
+
+    <h2>4. If You Contact Us</h2>
+    <p>
+      If you email us, we receive your email address and whatever you write. We use it to reply and to fix the issue you raise, and we do not add you to any mailing list.
+    </p>
+
+    <h2>5. Sharing</h2>
+    <p>
+      We do not sell or share personal information, because the Game does not collect any. Information you send us directly, such as a support email, is not shared with anyone except when the law requires it.
+    </p>
+
+    <h2>6. Children</h2>
+    <p>
+      The Game is suitable for all ages and collects no personal information from anyone, including children under 13.
+    </p>
+
+    <h2>7. Changes to this Policy</h2>
+    <p>
+      If the Game changes in a way that affects your privacy, for example if a future version adds a feature that uses the network, we will update this page and the effective date above before that version is released.
+    </p>
+
+    <h2>8. Contact</h2>
+    <p>
+      Questions can be sent to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Londonberry is based in Jacksonville, Florida, United States.
+    </p>
+  </LegalDocument>
+</BaseLayout>
